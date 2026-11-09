@@ -1,0 +1,29 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    
+    public function up(): void
+    {
+      Schema::create('admin', function (Blueprint $table) {
+    $table->id();
+    $table->string('name');
+    $table->string('email')->unique();
+    $table->string('password');
+    $table->text('address')->nullable();
+    $table->string('contact_number')->nullable();
+    $table->integer('inventory')->default(0);
+    $table->text('sales_report')->nullable();
+    $table->timestamps();
+});
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('admin');
+    }
+};
